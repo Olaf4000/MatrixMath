@@ -10,8 +10,8 @@ public class Main {
         Matrix m1 = new Matrix(matrix1);
         m1.printMatrixVisual();
 
-        m1.translateMatrix(new double[]{2.0, 2.0, 2.0});
-        m1.printMatrixVisual();
+       m1.scaleMatrix(new double[]{2,2,2});
+       m1.printMatrixVisual();
 
     }
 }

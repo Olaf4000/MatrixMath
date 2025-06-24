@@ -117,10 +117,24 @@ public class Matrix {
 
         Matrix translatedHomogenisedMatrix = MatrixOperations.multiplyMatrix(
                 this.getHomogenisedMatrix(),
-                TransformationMatrixFactory.getTransformationMatrix(translationVector)
+                TransformationMatrixFactory.getTranslationMatrix(translationVector)
         );
 
         Matrix translatedMatrix = deHomogeniseMatrix(translatedHomogenisedMatrix);
+        this.matrix = translatedMatrix.getMatrix();
+    }
+
+    public void scaleMatrix(double[] scalingVector) {
+        if (scalingVector.length != this.yLength) {
+            throw new IllegalArgumentException();
+        }
+
+        Matrix scaledHomogenisedMatrix = MatrixOperations.multiplyMatrix(
+                this.getHomogenisedMatrix(),
+                TransformationMatrixFactory.getScalingMatrix(scalingVector)
+        );
+
+        Matrix translatedMatrix = deHomogeniseMatrix(scaledHomogenisedMatrix);
         this.matrix = translatedMatrix.getMatrix();
     }
 }
